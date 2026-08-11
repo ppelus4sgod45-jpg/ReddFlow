@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>ReddFlow</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">R</span><span>ReddFlow</span></div>
+    <div class="top-actions">
+      <button id="presetsBtn" class="icon-btn" title="Multis">▦ <span>Multis</span></button>
+      <button id="historyBtn" class="icon-btn" title="Historial">◷ <span id="seenCount">0</span></button>
+      <button id="fullscreenBtn" class="icon-btn" title="Pantalla completa del feed">⛶</button>
+      <button id="settingsBtn" class="icon-btn" title="Ajustes">⚙</button>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <div class="subreddit-box">
+      <span class="r-prefix">r/</span>
+      <input id="subs" autocomplete="off" spellcheck="false" placeholder="funny, videos, ...">
+    </div>
+    <select id="sort" aria-label="Orden">
+      <option value="new">Nuevos</option>
+      <option value="hot">Hot</option>
+      <option value="top">Top</option>
+    </select>
+    <select id="period" class="hidden" aria-label="Periodo">
+      <option value="day">Día</option><option value="week">Semana</option><option value="month">Mes</option><option value="year">Año</option><option value="all">Siempre</option>
+    </select>
+    <button id="loadBtn" class="primary">Cargar</button>
+  </section>
+
+  <section class="quickbar">
+    <div class="filter-pills" aria-label="Tipos de contenido">
+      <label class="filter-pill"><input id="filterVideo" type="checkbox"><span>▶ Vídeos</span></label>
+      <label class="filter-pill"><input id="filterGif" type="checkbox"><span>GIF</span></label>
+      <label class="filter-pill"><input id="filterImage" type="checkbox"><span>▧ Imágenes</span></label>
+    </div>
+    <div class="volume-box">
+      <button id="muteBtn" class="volume-icon" title="Silenciar">🔊</button>
+      <input id="volume" type="range" min="0" max="100" step="1" aria-label="Volumen">
+      <span id="volumeValue">100%</span>
+    </div>
+  </section>
+
+  <div id="status" class="status" aria-live="polite">Desliza hacia abajo.</div>
+
+  <main id="feed" class="feed">
+    <section id="empty" class="empty">
+      <div class="empty-logo">R</div>
+      <h1>Tu feed, sin repetir</h1>
+      <p>Añade subreddits, elige qué tipo de contenido quieres y desliza como en TikTok.</p>
+    </section>
+  </main>
+
+  <dialog id="presetsDialog"><div class="dialog-card">
+    <div class="dialog-head"><div><h3>Multis</h3><p>Guarda combinaciones de subreddits.</p></div><button class="x" data-close="presetsDialog">×</button></div>
+    <label>Nombre del Multi<input id="presetName" placeholder="Favoritos"></label>
+    <button id="savePreset" class="primary full">Guardar subreddits actuales</button>
+    <div id="presetList" class="list"></div>
+  </div></dialog>
+
+  <dialog id="settingsDialog"><div class="dialog-card">
+    <div class="dialog-head"><div><h3>Ajustes</h3><p>El feed recuerda estos valores.</p></div><button class="x" data-close="settingsDialog">×</button></div>
+    <label class="switch-row"><span>Ocultar contenido ya visto</span><input id="hideSeen" type="checkbox"></label>
+    <label class="switch-row"><span>Marcar visto automáticamente</span><input id="autoSeen" type="checkbox"></label>
+    <label class="switch-row"><span>Autoplay de vídeos</span><input id="autoplay" type="checkbox"></label>
+    <label class="switch-row"><span>Mostrar +18</span><input id="showNsfw" type="checkbox"></label>
+    <label>Precargar cuando queden<input id="preloadThreshold" type="number" min="3" max="30"></label>
+    <button id="saveSettings" class="primary full">Guardar</button>
+  </div></dialog>
+
+  <dialog id="historyDialog"><div class="dialog-card">
+    <div class="dialog-head"><div><h3>Historial</h3><p>Contenido marcado como visto.</p></div><button class="x" data-close="historyDialog">×</button></div>
+    <button id="clearHistory" class="danger full">Borrar historial</button>
+    <div id="historyList" class="list"></div>
+  </div></dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
