@@ -1,0 +1,10 @@
+{
+  "name": "reddflow-web-rss",
+  "version": "10.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "description": "ReddFlow TikTok feed V10 - stable subreddit batch queue and 25-item buffer"
+}
